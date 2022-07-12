@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Formulário</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styleform.css"/>
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <script src="menuAtividades.js"> </script>
+  </head>
+  
+  <menu-atividade></menu-atividade>
+
+<center>
+  <fieldset>
+  <form name = "form">
+
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" placeholder="Pedro Augusto" required="required" name="Nome"/>
+    
+    <label for="Email">Email:</label>
+    <input type="Email" id="emailid" placeholder="seuemail@gmail.com" required="required" name="Email">
+
+    <label for="fone">Telefone:</label>
+    <input type="Telefone" id="fone" placeholder="(99)9-9999-9999" required="required" name="telefone">
+
+    <label for="senha">Senha:</label>
+    <input type="password" id="senha" placeholder="*********" required="required" name="senha">
+
+    <hr>
+    <legend>Sexo</legend>
+    <br>
+    
+    <label>
+    <input type="radio" id="M" name="sexo">
+    <label for="Masculino">Masculino</label>
+    </label>
+    
+  <br>
+     <label>
+     <input type="radio" id="F" name="sexo">  
+    <label for="Feminino">Feminino</label>
+     </label>
+    <hr>
+
+    <textarea placeholder="Recado"></textarea>
+    <input type="submit" class="enviar" onclick="Enviar();" value="Enviar">
+
+  </form>
+  </fieldset> 
+</center>  
+
+ </body>
+</html>

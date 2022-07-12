@@ -1,0 +1,34 @@
+nav{
+    background-color: black;
+    border:10px dashed #e8d5b7; 
+    margin-top:-10px;
+    margin-left:-10px;
+    margin-right:-8px;  
+}
+
+a{
+    text-decoration: underline;
+    font-family: Segoe UI black;
+    color:rgb(255, 255, 255);
+    font-size: 20px;
+}
+
+fieldset{
+
+
+width:90px;
+
+
+}
+
+form {
+    font-family: Verdana,Tahoma,sans-serif;
+    font-size: 15px;
+    background-color: #00e1ff;
+    max-width: 500px;
+}
+textarea{
+    resize: none;
+    width: 200px;
+    height: 100px;
+}
