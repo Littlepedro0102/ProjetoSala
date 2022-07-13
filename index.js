@@ -114,19 +114,16 @@ class MyComp extends HTMLElement {
                  <li>
                      <p>Quiz</p>
                  </li>
-                 <a href="#">
+                 <a href="https://super.abril.com.br/tudo-sobre/alienigena/">
                      <li>
-                         <p>Curiosidades</p>
+                         <p>Noticias</p>
                      </li>
-                     <a href="#">
+                     <a href="https://tecnoblog.net/responde/20-filmes-sobre-aliens-para-ver-na-netflix-star-e-outros-streamings/">
                          <li>
-                             <p>Conspirações</p>
+                             <p>Filmes</p>
                          </li>
-                         <a href="#">
-                             <li>
-                                 <p>Curiosidades</p>
-                             </li>
-                             <a href="#">
+                     
+                             <a href="https://33giga.com.br/5-documentarios-alienigenas-netflix/">
                                  <li>
                                      <p>Documentários</p>
                                  </li>    
