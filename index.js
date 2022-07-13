@@ -122,7 +122,10 @@ class MyComp extends HTMLElement {
                          <li>
                              <p>Conspirações</p>
                          </li>
-        
+                         <a href="#">
+                             <li>
+                                 <p>Curiosidades</p>
+                             </li>
                              <a href="#">
                                  <li>
                                      <p>Documentários</p>

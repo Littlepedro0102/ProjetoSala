@@ -89,7 +89,7 @@ class MyComp extends HTMLElement {
      <nav>
  
      <table width="1200" cellpadding="9" align="center" cellspacing="20">
-     <td> <a href="../index.html">Index</a></td>
+     <td> <a href="atividades.html">Index</a></td>
      <td><a href="curiosidades.html">Curiosidades</a></td>
      <td><a href="sobre.html">Projeto Angular</a></td>
      <td> <a href="git.html">GitHub</a></td>
