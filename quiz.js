@@ -1,194 +1,93 @@
-/* Aula 20 MaiaQuiz  */
 
-let titulo = document.querySelector('h1')
-let instrucoes = document.querySelector('#instrucoes')
-let aviso = document.querySelector('#aviso')
-//let respostaEsta = document.querySelector('#respostaEsta')
-let pontos = 0 // pontos para o placar
-let placar = 0 // placar
 
-// PERGUNTA
-let numQuestao = document.querySelector('#numQuestao')
-let pergunta   = document.querySelector('#pergunta')
+function submitQuiz() {
+    console.log('submitted');
 
-// ALTERNATIVAS
-let a = document.querySelector('#a')
-let b = document.querySelector('#b')
-let c = document.querySelector('#c')
+// get each answer score
+    function answerScore (qName) {
+        var radiosNo = document.getElementsByName(qName);
 
-// article com a class questoes
-let articleQuestoes = document.querySelector('.questoes')
-// ol li com as alternativas
-let alternativas = document.querySelector('#alternativas')
-
-const q0 = {
-    numQuestao   : 0,
-    pergunta     : "Pergunta",
-    alternativaA : "Alternativa A",
-    alternativaB : "Alternativa B",
-    alternativaC : "Alternativa C",
-    correta      : "0",
-}
-
-const q1 = {
-    numQuestao   : 1,
-    pergunta     : "Qual tag abaixo não pertence ao HMTL?",
-    alternativaA : "<br>",
-    alternativaB : "<color></color>",
-    alternativaC : "<span></span>",
-    correta      : "<color></color>",
-}
-
-const q2 = {
-    numQuestao   : 2,
-    pergunta     : "Qual tag abaixo pertence ao corpo de uma tabela?",
-    alternativaA : "<thead>",
-    alternativaB : "<tf>",
-    alternativaC : "<footer>",
-    correta      : "<tf>",
-}
-
-const q3 = {
-    numQuestao   : 3,
-    pergunta     : "Qual atributo abaixo não pertence a tag <a>?",
-    alternativaA : "title",
-    alternativaB : "target",
-    alternativaC : "src",
-    correta      : "title",
-}
-
-const q4 = {
-    numQuestao   : 4,
-    pergunta     : "Qual Tag abaixo pertence ao HTML?",
-    alternativaA : "<weight>",
-    alternativaB : "<super>",
-    alternativaC : "<sup>",
-    correta      : "<weight>",
-}
-
-const q5 = {
-    numQuestao   : 5,
-    pergunta     : "Qual tag abaixo pertence a um menu de navegação?",
-    alternativaA : "<nav>",
-    alternativaB : "<menu>",
-    alternativaC : "<item>",
-    correta      : "<nav>",
-}
-
-// CONSTANTE COM UM ARRAY DE OBJETOS COM TODAS AS QUESTOES
-const questoes = [q0, q1, q2, q3, q4, q5]
-
-let numero = document.querySelector('#numero')
-let total  = document.querySelector('#total')
-
-numero.textContent = q1.numQuestao
-
-let totalDeQuestoes = (questoes.length)-1
-console.log("Total de questões " + totalDeQuestoes)
-total.textContent = totalDeQuestoes
-
-// MONTAR A 1a QUESTAO COMPLETA, para iniciar o Quiz
-numQuestao.textContent = q1.numQuestao
-pergunta.textContent   = q1.pergunta
-a.textContent = q1.alternativaA
-b.textContent = q1.alternativaB
-c.textContent = q1.alternativaC
-
-// CONFIGURAR O VALUE INICIAL DA 1a QUESTAO COMPLETA
-a.setAttribute('value', '1A')
-b.setAttribute('value', '1B')
-c.setAttribute('value', '1C')
-
-// PARA MONTAR AS PROXIMAS QUESTOES
-function proximaQuestao(nQuestao) {
-    numero.textContent = nQuestao
-    numQuestao.textContent = questoes[nQuestao].numQuestao
-    pergunta.textContent   = questoes[nQuestao].pergunta
-    a.textContent = questoes[nQuestao].alternativaA
-    b.textContent = questoes[nQuestao].alternativaB
-    c.textContent = questoes[nQuestao].alternativaC
-    a.setAttribute('value', nQuestao+'A')
-    b.setAttribute('value', nQuestao+'B')
-    c.setAttribute('value', nQuestao+'C')
-}
-
-function bloquearAlternativas() {
-    a.classList.add('bloqueado')
-    b.classList.add('bloqueado')
-    c.classList.add('bloqueado')
-}
-
-function desbloquearAlternativas() {
-    a.classList.remove('bloqueado')
-    b.classList.remove('bloqueado')
-    c.classList.remove('bloqueado')
-}
-
-function verificarSeAcertou(nQuestao, resposta) {
-
-    let numeroDaQuestao = nQuestao.value
-    console.log("Questão " + numeroDaQuestao)
-
-    let respostaEscolhida = resposta.textContent
-    //console.log("RespU " + respostaEscolhida)
-
-    let certa = questoes[numeroDaQuestao].correta
-    //console.log("RespC " + certa)
-
-    if(respostaEscolhida == certa) {
-        //console.log("Acertou")
-        //respostaEsta.textContent = "Correta 😊"
-        pontos += 10 // pontos = pontos + 10
-    } else {
-        //console.log("Errou!")
-        //respostaEsta.textContent = "Errada 😢"
+        for (var i = 0, length = radiosNo.length; i < length; i++) {
+               if (radiosNo[i].checked) {
+        // do something with radiosNo
+                var answerValue = Number(radiosNo[i].value);
+            }
+        }
+        // change NaNs to zero
+        if (isNaN(answerValue)) {
+            answerValue = 0;
+        }
+        return answerValue;
     }
 
-    // atualizar placar
-    placar = pontos
-    instrucoes.textContent = "Pontos " + placar
+// calc score with answerScore function
+    var calcScore = (answerScore('q1') + answerScore('q2') + answerScore('q3') + answerScore('q4') + answerScore('q5')+ answerScore('q6')+ answerScore('q7')+ answerScore('q8')+ answerScore('q9')+ answerScore('q10'));
+    console.log("CalcScore: " + calcScore); // it works!
 
-    // bloquear a escolha de opcoes
-    bloquearAlternativas()
-
-    setTimeout(function() {
-        //respostaEsta.textContent = '...'
-        proxima = numeroDaQuestao+1
-
-        if(proxima > totalDeQuestoes) {
-            console.log('Fim do Jogo!')
-            fimDoJogo()
-        } else {
-            proximaQuestao(proxima)
+// function to return correct answer string
+    function correctAnswer (correctStringNo, qNumber) {
+        console.log("qNumber: " + qNumber); 
+         // logs 1,2,3,4 after called below
+        return ("Resposta correta da questão " + qNumber + "é:  &nbsp;<strong>" +
+            (document.getElementById(correctStringNo).innerHTML) + "</strong>");
         }
-    }, 250)
-    desbloquearAlternativas()
+
+// print correct answers only if wrong (calls correctAnswer function)
+    if (answerScore('q1') === 0) {
+        document.getElementById('correctAnswer1').innerHTML = correctAnswer('correctString1', 1);
+    }
+    if (answerScore('q2') === 0) {
+        document.getElementById('correctAnswer2').innerHTML = correctAnswer('correctString2', 2);
+    }
+    if (answerScore('q3') === 0) {
+        document.getElementById('correctAnswer3').innerHTML = correctAnswer('correctString3', 3);
+    }
+    if (answerScore('q4') === 0) {
+        document.getElementById('correctAnswer4').innerHTML = correctAnswer('correctString4', 4);
+    }
+    if (answerScore('q5') === 0) {
+        document.getElementById('correctAnswer5').innerHTML = correctAnswer('correctString5', 5);
+    }
+    if (answerScore('q6') === 0) {
+        document.getElementById('correctAnswer6').innerHTML = correctAnswer('correctString6', 6);
+    }
+    if (answerScore('q7') === 0) {
+        document.getElementById('correctAnswer7').innerHTML = correctAnswer('correctString7', 7);
+    }
+    if (answerScore('q8') === 0) {
+        document.getElementById('correctAnswer8').innerHTML = correctAnswer('correctString8', 8);
+    }
+    if (answerScore('q9') === 0) {
+        document.getElementById('correctAnswer9').innerHTML = correctAnswer('correctString9', 9);
+    }
+    if (answerScore('q10') === 0) {
+        document.getElementById('correctAnswer10').innerHTML = correctAnswer('correctString10', 10);
+    }
+
+
+
+
+// calculate "possible score" integer
+    var questionCountArray = document.getElementsByClassName('question');
+
+    var questionCounter = 0;
+    for (var i = 0, length = questionCountArray.length; i < length; i++) {
+        questionCounter++;
+    }
+
+// show score as "score/possible score"
+    var showScore = "Your Score: " + calcScore +"/" + questionCounter;
+// if 4/4, "perfect score!"
+    if (calcScore === questionCounter) {
+        showScore = showScore + "&nbsp; <strong>Pontuação perfeita!</strong>"
+    };
+    document.getElementById('userScore').innerHTML = showScore;
 }
 
-function fimDoJogo() {
-    instrucoes.textContent = "Fim de Jogo!"
-    numQuestao.textContent = ""
+$(document).ready(function() {
 
-    let pont = ''
-    pontos == 0 ? pont = 'ponto' : pont = 'pontos'
+$('#submitButton').click(function() {
+    $(this).addClass('hide');
+});
 
-    pergunta.textContent   = "Você conseguiu " + pontos + " " + pont
-
-    aviso.textContent = "Você conseguiu " + pontos + " " + pont
-
-    a.textContent = ""
-    b.textContent = ""
-    c.textContent = ""
-
-    a.setAttribute('value', '0')
-    b.setAttribute('value', '0')
-    c.setAttribute('value', '0')
-
-    // OCULTAR O ARTICLE DA QUESTAO
-    articleQuestoes.style.display = 'none'
-
-    setTimeout(function() {
-        pontos = 0 // zerar placar
-        location.reload();
-    }, 2000)
-}
+});
